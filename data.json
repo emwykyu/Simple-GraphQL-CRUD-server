@@ -1,0 +1,38 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "Kaguya",
+      "hair_colour": "Black",
+      "eye_colour": "Red",
+      "age": 15,
+      "email": "shinomiya@shinomiya.com"
+    },
+    {
+      "id": "2",
+      "name": "Chika",
+      "hair_colour": "Pink",
+      "eye_colour": "Pink"
+    },
+    {
+      "id": "3",
+      "name": "Nami",
+      "hair_colour": "Orange",
+      "eye_colour": "Dark Orange"
+    },
+    {
+      "id": "4",
+      "name": "Robin",
+      "hair_colour": "Black",
+      "eye_colour": "Blue"
+    },
+    {
+      "name": "Shirahoshi",
+      "email": "shirahohshi@ryuugu.net",
+      "age": "16",
+      "hair_colour": "light pink",
+      "eye_colour": "light pink",
+      "id": "U7TvIHl"
+    }
+  ]
+}
