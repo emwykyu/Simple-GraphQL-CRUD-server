@@ -1,0 +1,1 @@
+Simple GraphQL CRUD server
