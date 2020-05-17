@@ -21,6 +21,7 @@ const {
 const CustomerType = new GraphQLObjectType({
     name: 'Customer',
     fields: () => ({
+        //the shape of this Type must be reflected in the Data
         id: {type:GraphQLString},
         name: {type:GraphQLString},
         email: {type:GraphQLString},
@@ -76,11 +77,11 @@ const mutation = new GraphQLObjectType({
         addCustomer:{
             type: CustomerType,
             args: {
-                name: {type: new GraphQLNonNull(GraphQLString)},
+                name: {type: new GraphQLNonNull(GraphQLString)}, //makes it a required field, can't be null
                 age: {type: new GraphQLNonNull(GraphQLString)},
                 email: {type: new GraphQLNonNull(GraphQLString)},
                 hair_colour: {type: new GraphQLNonNull(GraphQLString)},
-                eye_colour: {type: new GraphQLNonNull(GraphQLString)} //makes it a required field, can't be null
+                eye_colour: {type: new GraphQLNonNull(GraphQLString)}
             },
             resolve(parentValue, args){
                 return axios.post('http://localhost:3000/customers', {
@@ -94,6 +95,7 @@ const mutation = new GraphQLObjectType({
             }
         }, 
 
+        //only requires an ID paramter (non null)
         deleteCustomer:{
             type: CustomerType,
             args:{
@@ -105,15 +107,16 @@ const mutation = new GraphQLObjectType({
             }
         }, 
 
+        //edit only requires the ID paramter (non null), and all other args must be NULLABLE
         editCustomer:{
             type: CustomerType,
             args: {
-                id: {type: new GraphQLNonNull(GraphQLString)},
-                name: {type: GraphQLString},
+                id: {type: new GraphQLNonNull(GraphQLString)}, //makes it a required field, can't be null
+                name: {type: GraphQLString}, //must be nullable so users aren't forced to edit every field
                 age: {type: GraphQLInt},
                 email: {type: GraphQLString},
                 hair_colour: {type: GraphQLString},
-                eye_colour: {type: GraphQLString} //makes it a required field, can't be null
+                eye_colour: {type: GraphQLString} 
             },
             resolve(parentValue, args){
                 return axios.patch(`http://localhost:3000/customers/${args.id}`, args)
